@@ -617,6 +617,29 @@ class AppLocalizationsDe extends AppLocalizations {
   String get addRelay => 'Relay hinzufügen';
 
   @override
+  String get restoreDefaultRelays => 'Standard-Relays wiederherstellen';
+
+  @override
+  String get restoreDefaultRelaysConfirmationTitle => 'Standard-Relays wiederherstellen?';
+
+  @override
+  String get restoreDefaultRelaysConfirmationMessage =>
+      'Möchtest du wirklich die Standard-Relays der App wiederherstellen? Dadurch werden deine aktuellen Relays gelöscht und ersetzt.';
+
+  @override
+  String get restoreDefaultRelaysError =>
+      'Standard-Relays konnten nicht wiederhergestellt werden. Bitte versuche es erneut.';
+
+  @override
+  String get addMyRelay => 'Mein Relay hinzufügen';
+
+  @override
+  String get addInboxRelay => 'Posteingangs-Relay hinzufügen';
+
+  @override
+  String get addKeyPackageRelay => 'Key-Package-Relay hinzufügen';
+
+  @override
   String get enterRelayAddress => 'Relay-Adresse eingeben';
 
   @override

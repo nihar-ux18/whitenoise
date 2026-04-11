@@ -1155,13 +1155,55 @@ abstract class AppLocalizations {
   /// Add relay sheet title and button
   ///
   /// In en, this message translates to:
-  /// **'Add Relay'**
+  /// **'Add relay'**
   String get addRelay;
+
+  /// Button to restore default relay configuration
+  ///
+  /// In en, this message translates to:
+  /// **'Restore default relays'**
+  String get restoreDefaultRelays;
+
+  /// Title for restore default relays confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Restore default relays?'**
+  String get restoreDefaultRelaysConfirmationTitle;
+
+  /// Message for restore default relays confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to restore the app\'s default relays? This will erase and replace your current relays.'**
+  String get restoreDefaultRelaysConfirmationMessage;
+
+  /// Error message when restoring default relays fails
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to restore default relays. Please try again.'**
+  String get restoreDefaultRelaysError;
+
+  /// Button to add a relay to my relays section
+  ///
+  /// In en, this message translates to:
+  /// **'Add my relay'**
+  String get addMyRelay;
+
+  /// Button to add a relay to inbox relays section
+  ///
+  /// In en, this message translates to:
+  /// **'Add inbox relay'**
+  String get addInboxRelay;
+
+  /// Button to add a relay to key package relays section
+  ///
+  /// In en, this message translates to:
+  /// **'Add key package relay'**
+  String get addKeyPackageRelay;
 
   /// Label for relay address input
   ///
   /// In en, this message translates to:
-  /// **'Enter relay address'**
+  /// **'Relay address'**
   String get enterRelayAddress;
 
   /// Placeholder for relay address input

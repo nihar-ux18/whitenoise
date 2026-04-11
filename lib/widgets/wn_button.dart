@@ -79,10 +79,10 @@ class WnButton extends StatelessWidget {
     return _buildButton(
       backgroundColor: colors.fillQuaternary,
       overlayColor: colors.fillQuaternaryHover,
-      contentColor: colors.fillContentQuaternary,
+      contentColor: colors.backgroundContentPrimary,
       disabledBackgroundColor: colors.fillQuaternary.withValues(alpha: 0.25),
-      disabledContentColor: colors.fillContentQuaternary.withValues(alpha: 0.25),
-      borderSide: BorderSide.none,
+      disabledContentColor: colors.backgroundContentPrimary.withValues(alpha: 0.25),
+      borderSide: BorderSide(color: colors.borderTertiary),
     );
   }
 
@@ -108,7 +108,7 @@ class WnButton extends StatelessWidget {
     final verticalPadding = _getVerticalPadding();
     final horizontalPadding = _getHorizontalPadding();
     final borderRadius = _getBorderRadius();
-    final iconSize = _getIconSize();
+    final resolvedIconSize = _getIconSize();
     final fontSize = _getFontSize();
     final iconPadding = (size == WnButtonSize.small || size == WnButtonSize.xsmall) ? 4.w : 8.w;
 
@@ -138,7 +138,7 @@ class WnButton extends StatelessWidget {
       ),
       child: loading
           ? _buildLoadingIndicator(activeContentColor)
-          : _buildContent(activeContentColor, iconSize, fontSize, iconPadding),
+          : _buildContent(activeContentColor, resolvedIconSize, fontSize, iconPadding),
     );
 
     return button;

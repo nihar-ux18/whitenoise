@@ -607,6 +607,29 @@ class AppLocalizationsPt extends AppLocalizations {
   String get addRelay => 'Adicionar Relay';
 
   @override
+  String get restoreDefaultRelays => 'Restaurar relays padrão';
+
+  @override
+  String get restoreDefaultRelaysConfirmationTitle => 'Restaurar relays padrão?';
+
+  @override
+  String get restoreDefaultRelaysConfirmationMessage =>
+      'Tem certeza de que deseja restaurar os relays padrão do aplicativo? Isso apagará e substituirá seus relays atuais.';
+
+  @override
+  String get restoreDefaultRelaysError =>
+      'Falha ao restaurar os relays padrão. Por favor, tente novamente.';
+
+  @override
+  String get addMyRelay => 'Adicionar meu relay';
+
+  @override
+  String get addInboxRelay => 'Adicionar relay de caixa de entrada';
+
+  @override
+  String get addKeyPackageRelay => 'Adicionar relay de pacote de chaves';
+
+  @override
   String get enterRelayAddress => 'Digite o endereço do relay';
 
   @override

@@ -610,6 +610,29 @@ class AppLocalizationsEs extends AppLocalizations {
   String get addRelay => 'Añadir Relé';
 
   @override
+  String get restoreDefaultRelays => 'Restaurar relés predeterminados';
+
+  @override
+  String get restoreDefaultRelaysConfirmationTitle => '¿Restaurar relés predeterminados?';
+
+  @override
+  String get restoreDefaultRelaysConfirmationMessage =>
+      '¿Estás seguro de que quieres restaurar los relés predeterminados de la aplicación? Esto borrará y reemplazará tus relés actuales.';
+
+  @override
+  String get restoreDefaultRelaysError =>
+      'No se pudieron restaurar los relés predeterminados. Por favor, inténtalo de nuevo.';
+
+  @override
+  String get addMyRelay => 'Añadir mi relé';
+
+  @override
+  String get addInboxRelay => 'Añadir relé de bandeja de entrada';
+
+  @override
+  String get addKeyPackageRelay => 'Añadir relé de paquete de claves';
+
+  @override
   String get enterRelayAddress => 'Introduce la dirección del relé';
 
   @override
