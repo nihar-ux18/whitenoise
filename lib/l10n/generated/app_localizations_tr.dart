@@ -321,6 +321,23 @@ class AppLocalizationsTr extends AppLocalizations {
       'Özel anahtarınızı yedeklemediyseniz, bu profili başka hiçbir Nostr hizmetinde kullanamazsınız.';
 
   @override
+  String get signOutCalloutTitle => 'Özel anahtarınızı yedekleyin';
+
+  @override
+  String get signOutCalloutDescription =>
+      'White Noise\'dan çıkış yaptığınızda, sohbetleriniz bu cihazdan silinecek ve geri yüklenemeyecektir.\n\nHesabınıza tekrar erişmek istiyorsanız özel anahtarınızı kopyalayın ve güvenli bir yerde saklayın. Onsuz erişiminizi kalıcı olarak kaybedersiniz.';
+
+  @override
+  String get signOutCalloutDescriptionBefore => 'Özel anahtarınızı ';
+
+  @override
+  String get signOutCalloutDescriptionLink => 'Ayarlar → Profil Anahtarları';
+
+  @override
+  String get signOutCalloutDescriptionAfter =>
+      ' bölümünden yedeklediğinizden emin olun. Onsuz tekrar giriş yapamayacaksınız.';
+
+  @override
   String get backUpPrivateKey => 'Özel anahtarınızı yedekleyin';
 
   @override

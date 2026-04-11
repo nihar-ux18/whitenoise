@@ -322,6 +322,23 @@ class AppLocalizationsFr extends AppLocalizations {
       'Si vous n\'avez pas sauvegardé votre clé privée, vous ne pourrez pas utiliser ce profil sur un autre service Nostr.';
 
   @override
+  String get signOutCalloutTitle => 'Sauvegardez votre clé privée';
+
+  @override
+  String get signOutCalloutDescription =>
+      'Lorsque vous vous déconnectez de White Noise, vos discussions seront supprimées de cet appareil et ne pourront pas être restaurées.\n\nCopiez et stockez votre clé privée en lieu sûr si vous souhaitez accéder à nouveau à votre compte. Sans elle, vous perdrez l\'accès définitivement.';
+
+  @override
+  String get signOutCalloutDescriptionBefore =>
+      'Assurez-vous d\'avoir sauvegardé votre clé privée dans ';
+
+  @override
+  String get signOutCalloutDescriptionLink => 'Paramètres → Clés de profil';
+
+  @override
+  String get signOutCalloutDescriptionAfter => '. Sans elle, vous ne pourrez plus vous connecter.';
+
+  @override
   String get backUpPrivateKey => 'Sauvegardez votre clé privée';
 
   @override

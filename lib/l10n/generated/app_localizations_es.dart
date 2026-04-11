@@ -322,6 +322,23 @@ class AppLocalizationsEs extends AppLocalizations {
       'Si no has respaldado tu llave privada, no podrás usar este perfil en ningún otro servicio Nostr.';
 
   @override
+  String get signOutCalloutTitle => 'Respalda tu llave privada';
+
+  @override
+  String get signOutCalloutDescription =>
+      'Cuando cierres sesión en White Noise, tus chats se eliminarán de este dispositivo y no podrán restaurarse.\n\nCopia y guarda de forma segura tu llave privada si deseas acceder a tu cuenta de nuevo. Sin ella, perderás el acceso de forma permanente.';
+
+  @override
+  String get signOutCalloutDescriptionBefore =>
+      'Asegúrate de haber respaldado tu llave privada en ';
+
+  @override
+  String get signOutCalloutDescriptionLink => 'Ajustes → Llaves de perfil';
+
+  @override
+  String get signOutCalloutDescriptionAfter => '. Sin ella, no podrás iniciar sesión de nuevo.';
+
+  @override
   String get backUpPrivateKey => 'Respalda tu llave privada';
 
   @override

@@ -324,6 +324,24 @@ class AppLocalizationsDe extends AppLocalizations {
       'Wenn du deinen privaten Schlüssel nicht gesichert hast, kannst du dieses Profil bei keinem anderen Nostr-Dienst verwenden.';
 
   @override
+  String get signOutCalloutTitle => 'Privaten Schlüssel sichern';
+
+  @override
+  String get signOutCalloutDescription =>
+      'Wenn du dich bei White Noise abmeldest, werden deine Chats von diesem Gerät gelöscht und können nicht wiederhergestellt werden.\n\nKopiere und speichere deinen privaten Schlüssel sicher, wenn du wieder auf dein Konto zugreifen möchtest. Ohne ihn verlierst du dauerhaft den Zugang.';
+
+  @override
+  String get signOutCalloutDescriptionBefore =>
+      'Stelle sicher, dass du deinen privaten Schlüssel in ';
+
+  @override
+  String get signOutCalloutDescriptionLink => 'Einstellungen → Profilschlüssel';
+
+  @override
+  String get signOutCalloutDescriptionAfter =>
+      ' gesichert hast. Ohne ihn kannst du dich nicht mehr anmelden.';
+
+  @override
   String get backUpPrivateKey => 'Privaten Schlüssel sichern';
 
   @override

@@ -399,6 +399,26 @@
   "@signOutWarningBackupKey": {
     "description": "Sign out warning second paragraph (back up key, shown only for local storage)"
   },
+  "signOutCalloutTitle": "Back up your private key",
+  "@signOutCalloutTitle": {
+    "description": "Sign out callout title (shown only for local storage)"
+  },
+  "signOutCalloutDescription": "When you sign out of White Noise, your chats will be deleted from this device and cannot be restored.\n\nCopy and securely store your private key if you want to access your account again. Without it, you will lose access permanently.",
+  "@signOutCalloutDescription": {
+    "description": "Sign out callout description (shown only for local storage)"
+  },
+  "signOutCalloutDescriptionBefore": "Make sure you've backed up your private key in ",
+  "@signOutCalloutDescriptionBefore": {
+    "description": "Sign out callout description text before the link"
+  },
+  "signOutCalloutDescriptionLink": "Settings → Profile Keys",
+  "@signOutCalloutDescriptionLink": {
+    "description": "Sign out callout description link text"
+  },
+  "signOutCalloutDescriptionAfter": ". Without it, you won't be able to sign in again.",
+  "@signOutCalloutDescriptionAfter": {
+    "description": "Sign out callout description text after the link"
+  },
   "backUpPrivateKey": "Back up your private key",
   "@backUpPrivateKey": {
     "description": "Back up private key section title"

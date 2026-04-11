@@ -322,6 +322,22 @@ class AppLocalizationsRu extends AppLocalizations {
       'Если вы не сделали резервную копию приватного ключа, вы не сможете использовать этот профиль в любом другом сервисе Nostr.';
 
   @override
+  String get signOutCalloutTitle => 'Сделайте резервную копию приватного ключа';
+
+  @override
+  String get signOutCalloutDescription =>
+      'Когда вы выходите из White Noise, ваши чаты будут удалены с этого устройства и не могут быть восстановлены.\n\nСкопируйте и надёжно сохраните свой приватный ключ, если хотите снова получить доступ к аккаунту. Без него вы потеряете доступ навсегда.';
+
+  @override
+  String get signOutCalloutDescriptionBefore => 'Убедитесь, что вы сохранили приватный ключ в ';
+
+  @override
+  String get signOutCalloutDescriptionLink => 'Настройки → Ключи профиля';
+
+  @override
+  String get signOutCalloutDescriptionAfter => '. Без него вы не сможете войти снова.';
+
+  @override
   String get backUpPrivateKey => 'Сделайте резервную копию приватного ключа';
 
   @override

@@ -26,11 +26,17 @@ class SignOutScreen extends HookConsumerWidget {
     final colors = context.colors;
     final pubkey = ref.watch(authProvider).value;
     final (:nsecState) = useNsec(pubkey);
+    final warningCalloutExpanded = useState(false);
     final obscurePrivateKey = useState(true);
     final isLoggingOut = useState(false);
     final scheduleClipboardClear = useClipboardGuard();
-    final (:noticeMessage, :noticeType, :showSuccessNotice, :showErrorNotice, :dismissNotice) =
-        useSystemNotice();
+    final (
+      :noticeMessage,
+      :noticeType,
+      :showSuccessNotice,
+      :showErrorNotice,
+      :dismissNotice,
+    ) = useSystemNotice();
 
     useEffect(() {
       if (nsecState.error != null) {
@@ -43,10 +49,6 @@ class SignOutScreen extends HookConsumerWidget {
 
     if (pubkey == null) {
       return const SizedBox.shrink();
-    }
-
-    void togglePrivateKeyVisibility() {
-      obscurePrivateKey.value = !obscurePrivateKey.value;
     }
 
     Future<void> signOut() async {
@@ -67,6 +69,7 @@ class SignOutScreen extends HookConsumerWidget {
       backgroundColor: colors.backgroundPrimary,
       body: SafeArea(
         child: WnSlate(
+          shrinkWrapContent: true,
           header: WnSlateNavigationHeader(
             title: context.l10n.signOut,
             onNavigate: () => Routes.goBack(context),
@@ -83,65 +86,50 @@ class SignOutScreen extends HookConsumerWidget {
                 )
               : null,
           child: Padding(
-            padding: EdgeInsets.fromLTRB(14.w, 0, 14.w, 14.h),
+            padding: EdgeInsets.fromLTRB(14.w, 0, 14.w, 16.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Gap(24.h),
-                        WnCallout(
-                          title: context.l10n.signOutConfirmation,
-                          description: nsecState.nsecStorage == NsecStorage.local
-                              ? '${context.l10n.signOutWarning}\n\n${context.l10n.signOutWarningBackupKey}'
-                              : context.l10n.signOutWarning,
-                          type: CalloutType.warning,
-                        ),
-                        if (nsecState.nsecStorage == NsecStorage.local) ...[
-                          Gap(24.h),
-                          Text(
-                            context.l10n.backUpPrivateKey,
-                            style: context.typographyScaled.semiBold16.copyWith(
-                              color: colors.backgroundContentPrimary,
-                            ),
-                          ),
-                          Gap(8.h),
-                          Text(
-                            context.l10n.copyPrivateKeyHint,
-                            style: context.typographyScaled.medium14.copyWith(
-                              color: colors.backgroundContentSecondary,
-                            ),
-                          ),
-                          Gap(16.h),
-                          WnCopyableField(
-                            label: context.l10n.privateKey,
-                            value: nsecState.nsec ?? '',
-                            obscurable: true,
-                            obscured: obscurePrivateKey.value,
-                            onToggleVisibility: togglePrivateKeyVisibility,
-                            onCopied: () {
-                              showSuccessNotice('privateKeyCopied');
-                              scheduleClipboardClear();
-                            },
-                          ),
-                        ],
-                        Gap(32.h),
-                        SizedBox(
-                          width: double.infinity,
-                          child: WnButton(
-                            text: context.l10n.signOut,
-                            onPressed: signOut,
-                            loading: isLoggingOut.value,
-                            size: WnButtonSize.medium,
-                          ),
-                        ),
-                        Gap(24.h),
-                      ],
+                WnCallout(
+                  title: context.l10n.signOutConfirmation,
+                  descriptionWidget: warningCalloutExpanded.value
+                      ? _SignOutCalloutDescription(
+                          nsec: nsecState.nsec,
+                          obscured: obscurePrivateKey.value,
+                          onToggleVisibility: () {
+                            obscurePrivateKey.value = !obscurePrivateKey.value;
+                          },
+                          onCopied: () {
+                            showSuccessNotice('privateKeyCopied');
+                            scheduleClipboardClear();
+                          },
+                        )
+                      : null,
+                  type: CalloutType.warning,
+                  compact: true,
+                  isExpanded: warningCalloutExpanded.value,
+                  onToggle: () {
+                    warningCalloutExpanded.value = !warningCalloutExpanded.value;
+                  },
+                ),
+                Gap(12.h),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  spacing: 8.h,
+                  children: [
+                    WnButton(
+                      text: context.l10n.cancel,
+                      type: WnButtonType.outline,
+                      size: WnButtonSize.medium,
+                      onPressed: () => Routes.goBack(context),
                     ),
-                  ),
+                    WnButton(
+                      text: context.l10n.signOut,
+                      size: WnButtonSize.medium,
+                      onPressed: signOut,
+                      loading: isLoggingOut.value,
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -161,5 +149,53 @@ String _noticeMessageL10n(BuildContext context, String key) {
       return l10n.privateKeyCopied;
     default:
       return key;
+  }
+}
+
+class _SignOutCalloutDescription extends StatelessWidget {
+  const _SignOutCalloutDescription({
+    required this.nsec,
+    required this.obscured,
+    required this.onToggleVisibility,
+    required this.onCopied,
+  });
+
+  final String? nsec;
+  final bool obscured;
+  final VoidCallback onToggleVisibility;
+  final VoidCallback onCopied;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    final typography = context.typographyScaled;
+    final l10n = context.l10n;
+    final descriptionColor = colors.backgroundContentQuaternary;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          l10n.signOutCalloutDescription,
+          style: typography.medium14.copyWith(color: descriptionColor),
+        ),
+        Gap(4.h),
+        WnCopyableField(
+          label: l10n.privateKey,
+          value: nsec ?? '',
+          obscurable: true,
+          obscured: obscured,
+          defaultTextColor: true,
+          obscureDotCount: 14,
+          onToggleVisibility: onToggleVisibility,
+          onCopied: onCopied,
+        ),
+        Gap(4.h),
+        Text(
+          l10n.privateKeyDescription,
+          style: typography.medium14.copyWith(color: descriptionColor),
+        ),
+      ],
+    );
   }
 }
