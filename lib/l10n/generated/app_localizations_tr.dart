@@ -288,8 +288,14 @@ class AppLocalizationsTr extends AppLocalizations {
       'Kar amacı gütmeyen bir kuruluş olarak White Noise, yalnızca gizliliğiniz ve özgürlüğünüz için var, kar için değil. Desteğiniz bizi bağımsız ve taviz vermeden tutar.';
 
   @override
-  String get donateContributionLetter =>
-      'Bir bağış için katkı onay mektubuna ihtiyacınız varsa, info@ipf.dev adresinden bizimle iletişime geçin';
+  String get donateContributionAcknowledgmentTitle => 'Katkı onayı';
+
+  @override
+  String get donateContributionLetterBefore =>
+      'Bir bağış için katkı onay mektubuna ihtiyacınız varsa, ';
+
+  @override
+  String get donateContributionLetterAfter => ' adresinden bizimle iletişime geçin';
 
   @override
   String get lightningAddress => 'Lightning Adresi';
